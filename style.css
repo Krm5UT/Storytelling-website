@@ -1,7 +1,36 @@
 html, body {
   margin: 0;
   padding: 0;
+  background-color: #9DA7BB;
 }
 canvas {
   display: block;
 }
+
+h1 {
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 20px 0;
+  background-color: black;
+}
+
+h2 {
+  text-align: center;
+  background-color: #9DA7BB;
+  color: #000;
+  margin: 0;
+  padding: 20px 0;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+main{
+    background-color: #9DA7BB;
+    padding: 10px;
+    margin: 0;
+}
+

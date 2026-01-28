@@ -1,0 +1,81 @@
+function setup() {
+  createCanvas(window.innerWidth, window.innerHeight);
+}
+
+function windowResized() {
+  resizeCanvas(window.innerWidth, window.innerHeight);
+}
+
+function draw() {
+  background('#9DA7BB'); // Light blue-gray background
+  
+  // Draw 3 window rectangles with spacing
+  let windowWidth = 123;
+  let windowHeight = 180;
+  let spacing = 100; // Space between windows
+  let totalWindowWidth = windowWidth * 3 + spacing * 2; // Total width of all windows
+  let startX = (width - totalWindowWidth) / 2; // Center windows horizontally
+  let startY = height * 0.2; // 20% from top
+  
+  // Window styling
+  noStroke
+  fill('#d4dae4'); // off white window color
+  
+  // Draw window 1
+  rect(startX, startY, windowWidth, windowHeight);
+  
+  // Draw window 2
+  rect(startX + windowWidth + spacing, startY, windowWidth, windowHeight);
+  
+  // Draw window 3
+  rect(startX + 2 * (windowWidth + spacing), startY, windowWidth, windowHeight);
+
+  // Add inward shadows to windows
+  noStroke();
+  noFill();
+  // Shadow for window 1
+  rect(startX + 5, startY + 5, windowWidth - 10, windowHeight - 10);
+  // Shadow for window 2
+  rect(startX + windowWidth + spacing + 5, startY + 5, windowWidth - 10, windowHeight - 10);
+  // Shadow for window 3
+  rect(startX + 2 * (windowWidth + spacing) + 5, startY + 5, windowWidth - 10, windowHeight - 10);
+
+  // Draw double doors
+  let doorWidth = 280;
+  let doorHeight = 200;
+  let doorX = (width - doorWidth) / 2; // Center the door horizontally
+  let doorY = height * 0.58; // 58% from top
+  
+  // Draw "ENTER" text above doors
+  fill('#000');
+  noStroke();
+  textAlign(CENTER, CENTER);
+  textSize(48);
+  text('ENTER', width / 2, doorY - 60);
+  
+  // Door styling
+  stroke('#1E1E1E'); // black outline
+  strokeWeight(2);
+  fill('#7F8CA6'); // grey-blueish color for door
+  
+  // Draw left door
+  rect(doorX, doorY, doorWidth / 2, doorHeight);
+  
+  // Draw right door
+  rect(doorX + doorWidth / 2, doorY, doorWidth / 2, doorHeight);
+
+  // Add inward shadows to doors
+  stroke('#3D3D3D'); // Darker shadow color
+  strokeWeight(3);
+  noFill();
+  // Shadow for left door
+  rect(doorX + 8, doorY + 8, doorWidth / 2 - 16, doorHeight - 16);
+  // Shadow for right door
+  rect(doorX + doorWidth / 2 + 8, doorY + 8, doorWidth / 2 - 16, doorHeight - 16);
+  
+  // Draw door handles (knobs)
+  fill('#1E1E1E'); // Gold color
+  noStroke();
+  rect(doorX + doorWidth / 3, doorY + doorHeight / 2, 12, 3); // Left door handle
+  rect(doorX + 3 * doorWidth / 5, doorY + doorHeight / 2, 12, 3); // Right door handle
+}
