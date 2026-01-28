@@ -55,7 +55,7 @@ function draw() {
   // Draw windows
   noStroke();
   for (let win of windows) {
-    fill(hoveredWindow === win.id ? '#E8F0FF' : '#f7faff'); // Lighter on hover
+    fill(hoveredWindow === win.id ? '#FFF6E8' : '#f7faff'); // Lighter on hover
     rect(win.x, win.y, win.w, win.h);
   }
 

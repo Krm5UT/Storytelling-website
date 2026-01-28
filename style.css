@@ -15,18 +15,15 @@ h1 {
   background-color: black;
 }
 
-h2 {
+/* REMOVE 
+    h2 {
   text-align: center;
   background-color: #9DA7BB;
   color: #000;
   margin: 0;
-  padding: 20px 0;
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-}
+  margin-top: 1px;
+  padding: 0px 0;
+} */
 
 main{
     background-color: #9DA7BB;
