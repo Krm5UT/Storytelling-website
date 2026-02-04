@@ -1,11 +1,13 @@
 let JNTS;
 let doorImg;
+let doorOpenImg;
 let buildingImg;
 let windows = []; // Store door positions
 
 // ========================= PRELOAD =========================
 function preload() {
   doorImg = loadImage('../images/door.png');
+  doorOpenImg = loadImage('../images/door.open.png');
   buildingImg = loadImage('../images/OIP.webp');
 }
 
@@ -38,8 +40,8 @@ function draw() {
   noTint();
   
   //---------------------------- Draw 3 door rectangles with spacing
-  let windowWidth = 190;
-  let windowHeight = 210;
+  let windowWidth = 150;
+  let windowHeight = 260;
   let spacing = 70; // Space between windows
   let rowOffset = 40; // Extra drop for bottom row
   let totalWindowWidth = windowWidth * 3 + spacing * 2; // Total width of all windows
@@ -65,9 +67,26 @@ function draw() {
   strokeWeight(10);
   line(buildingX, dividerY, buildingX + buildingWidth, dividerY);
   
+  // Check if mouse is hovering over the second door (index 1)
+  let secondDoor = windows[1];
+  let isHoveringSecondDoor = mouseX > secondDoor.x && mouseX < secondDoor.x + secondDoor.w &&
+                             mouseY > secondDoor.y && mouseY < secondDoor.y + secondDoor.h;
+  
+  // Draw rectangle behind second door (before drawing doors)
+  noStroke();
+  fill('#2a2a2a');
+  rect(secondDoor.x, secondDoor.y, secondDoor.w, secondDoor.h);
+  
   // Draw doors
   noStroke();
-  for (let win of windows) {
-    image(doorImg, win.x, win.y, win.w, win.h);
+  for (let i = 0; i < windows.length; i++) {
+    let win = windows[i];
+    
+    // Use open door image for second door when hovering
+    if (i === 1 && isHoveringSecondDoor) {
+      image(doorOpenImg, win.x, win.y - 13, 150, 290); // Custom size for open door, positioned higher
+    } else {
+      image(doorImg, win.x, win.y, win.w, win.h);
+    }
   }
 }
