@@ -1,6 +1,7 @@
 let JNTS;
 let windows = []; // Store window data
 let hoveredWindow = null; // Track which window is hovered
+let activeWindows = new Set(); // Track which windows are on (clicked)
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
@@ -51,14 +52,19 @@ function draw() {
   // Draw windows
   noStroke();
   for (let win of windows) {
-    fill(hoveredWindow === win.id ? '#fff2b6' : '#f7faff'); // Lighter on hover
+    fill(activeWindows.has(win.id) ? '#fff2b6' : '#f7faff'); // Lighter when active (clicked)
     rect(win.x, win.y, win.w, win.h);
   }
 }
 
 function mousePressed() {
+  // Check if a window is clicked
   if (hoveredWindow !== null) {
-    console.log('Window ' + (hoveredWindow + 1) + ' clicked');
-    // Add your window interaction logic here
+    if (activeWindows.has(hoveredWindow)) {
+      activeWindows.delete(hoveredWindow); // Turn off window
+      console.log('Window ' + (hoveredWindow + 1) + ' turned off');
+    } else {
+      activeWindows.add(hoveredWindow); // Turn on window
+      console.log('Window ' + (hoveredWindow + 1) + ' turned on');
+    }
   }
-}
