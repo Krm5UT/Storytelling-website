@@ -180,7 +180,6 @@ function draw() {
   background('#9DA7BB');
   
    
-  
   // Calculate responsive building dimensions
   buildingWidth = width * 0.6;
   buildingX = (width - buildingWidth) / 2;
@@ -193,7 +192,7 @@ function draw() {
   rect(buildingX + buildingWidth, 0, buildingX, height);
   
   // Draw building body with image
-  tint(255, 200);
+  tint(200, 205); // Slight transparency
   image(buildingImg, buildingX, buildingY, buildingWidth, buildingHeight);
   noTint();
   
